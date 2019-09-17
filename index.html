@@ -1,0 +1,42 @@
+<html>
+  <body>
+    <script src="web3.min.js"></script>
+    <script>
+        function tips() {
+            var reminder = document.getElementById('reminder');
+            reminder.innerHTML = 'Be patient to wait for around 30s !'
+        }
+        function signature() {
+            var web3 = new Web3();
+            var nickname = document.getElementById('nickname').value;
+            var keystore = document.getElementById('keystore').value;
+            var passwd = document.getElementById('passwd').value;
+            var ret = web3.eth.accounts.decrypt(keystore, passwd);
+            var private_key = ret['privateKey'];
+            ret = web3.eth.accounts.sign(nickname, private_key);
+            var output = document.getElementById('output');
+            output.innerHTML = 'signature result: ' + ret['signature'];
+        }
+    </script>
+    <h1>Sign Your Nickname</h1>
+    <div>If you want to signature offline, please visit
+        <a href="https://github.com/Tastingo/web3js-signature.git">repo</a>.
+    </div>
+    <h2>Nickname</h2>
+    <div>
+      <input id="nickname" type="text">
+    </div>
+    <h2>Keystore</h2>
+    <div>
+        <textarea id="keystore" rows="8" cols="60"></textarea>
+    </div>
+    <h2>Password</h2>
+    <div>
+      <input id="passwd" type="password">
+      <button onclick="tips(); signature()">Signature</button>
+    </div>
+    <div id="reminder">signature takes around 30 seconds, please be patient !</div>
+    <br>
+    <div id="output"></div>
+  </body>
+</html>
