@@ -2,10 +2,6 @@
   <body>
     <script src="web3.min.js"></script>
     <script>
-        function tips() {
-            var reminder = document.getElementById('reminder');
-            reminder.innerHTML = 'Be patient to wait for around 30s !'
-        }
         function signature() {
             var web3 = new Web3();
             var nickname = document.getElementById('nickname').value;
@@ -22,6 +18,9 @@
     <div>If you want to signature offline, please visit
         <a href="https://github.com/Tastingo/web3js-signature.git">repo</a>.
     </div>
+    <div>If you want to signature with metamask, please visit
+        <a href="metamask.html">metamask signature</a>.
+    </div>
     <h2>Nickname</h2>
     <div>
       <input id="nickname" type="text">
@@ -33,7 +32,7 @@
     <h2>Password</h2>
     <div>
       <input id="passwd" type="password">
-      <button onclick="tips(); signature()">Signature</button>
+      <button onclick="signature()">Signature</button>
     </div>
     <div id="reminder">signature takes around 30 seconds, please be patient !</div>
     <br>
